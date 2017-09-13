@@ -29,8 +29,8 @@ Keyboard controls
 -----------------
 - ``LEFT`` -- Slide piece left
 - ``RIGHT`` -- Slide piece right
-- ``Z`` -- Rotate piece leftward
-- ``X`` -- Rotate piece rightward
+- ``Z`` -- Rotate piece anticlockwise
+- ``X`` -- Rotate piece clockwise
 - ``SPACE`` -- Hard drop
 
 Licence
