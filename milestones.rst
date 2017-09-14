@@ -63,7 +63,11 @@ Milestones
 - Add scoring system
 - Display score
 
-1.0.0
+0.9.0
 -----
 - Add randomizer
 - Add automatic spawning
+
+1.0.0
+-----
+- Create package for release
