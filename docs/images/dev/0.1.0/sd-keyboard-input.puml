@@ -1,0 +1,32 @@
+@startuml
+
+title Keyboard input
+
+actor Player
+boundary App
+participant KivyWindow
+participant ": KivyKeyboard"
+participant ": KeyboardHandler"
+participant ": Game"
+
+note right of ": KeyboardHandler": Controller
+note right of ": Game": Controller
+
+": KeyboardHandler" -> KivyWindow : request_keyboard()
+KivyWindow --> ": KeyboardHandler" : : KivyKeyboard
+": KeyboardHandler" -> ": KivyKeyboard" : bind(on_key_down, self.on_key_down)
+loop
+  Player -> App : press key
+  App --> KivyWindow : event
+  KivyWindow --> ": KivyKeyboard" : event
+  ": KivyKeyboard" -> ": KeyboardHandler" : on_key_down(key_info)
+  ": KeyboardHandler" -> ": KeyboardHandler" : key = key_info[i]
+  alt key == 'LEFT'
+    ": KeyboardHandler" -> ": Game": shift_left()
+    opt can_shift
+      ": Game" -> : shift_left()
+    end
+  end
+end
+
+@enduml

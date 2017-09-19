@@ -1,0 +1,26 @@
+@startuml
+
+title Launching the game
+
+actor Player
+boundary App
+participant ": Game"
+participant ": PlayfieldView"
+participant ": KeyboardHandler"
+
+
+Player -> App : launch
+create ": Game"
+App -> ": Game" : game = _init_()
+create ": PlayfieldView"
+App -> ": PlayfieldView" : root = _init_(game)
+create ": KeyboardHandler"
+App -> ": KeyboardHandler" : _init_(game)
+App -> App : Clock.schedule_interval(game_loop, call_rate)
+note left
+  def game_loop():
+      game.update()
+      root.draw()
+end note
+App -> App : run()
+@enduml

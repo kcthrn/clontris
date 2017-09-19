@@ -19,4 +19,10 @@
 
 Developer Notes
 ===============
-.. image:: images/domain-model-tetris.svg
+.. Diagrams created with Plantuml/Umlet
+
+0.1.0
+-----
+.. image:: images/dev/0.1.0/domain-model-tetris.svg
+.. image:: images/dev/0.1.0/sd-launching-the-game.svg
+.. image:: images/dev/0.1.0/sd-keyboard-input.svg
