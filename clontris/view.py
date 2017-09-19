@@ -21,6 +21,7 @@
 from kivy.uix.widget import Widget
 from kivy.logger import Logger
 
+
 class View(Widget):
     """This is a view into the game."""
 

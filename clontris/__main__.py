@@ -22,8 +22,9 @@ from kivy.logger import Logger
 from kivy.config import Config
 
 from clontris import meta
-from clontris.core import update
+from clontris.game import Game
 from clontris.view import View
+from clontris.input import KeyboardHandler
 
 Config.set('kivy', 'log_level', 'debug')
 Config.set('graphics', 'resizable', 0)
@@ -32,15 +33,19 @@ Config.set('graphics', 'resizable', 0)
 class Clontris(App):
 
     def build(self):
+
         self.title = meta.project_name
+        self.game = Game()
+        self.root = View()
+        KeyboardHandler(self.game)
+
         # TODO: Change framerate later to 1/30 or 1/60
         framerate = 1  # in seconds
         Clock.schedule_interval(self.game_loop, framerate)
         Logger.info("Clontris: Scheduled game loop")
-        return View()
 
     def game_loop(self, dt):
-        update()
+        self.game.update()
         self.root.draw()
 
 

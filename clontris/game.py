@@ -16,4 +16,26 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-"""This module contains the core functionality of the game."""
+import logging
+
+
+class Game():
+    """The class coordinates all actions in Clontris."""
+
+    def hard_drop(self):
+        logging.debug("Game: Did hard drop")
+
+    def rotate_acw(self):
+        logging.debug("Game: Did anti-clockwise rotation")
+
+    def rotate_cw(self):
+        logging.debug("Game: Did clockwise rotation")
+
+    def shift_left(self):
+        logging.debug("Game: Did shift left")
+
+    def shift_right(self):
+        logging.debug("Game: Did shift right")
+
+    def update(self):
+        logging.debug("Game: Nothing to update :D")
