@@ -19,7 +19,7 @@ You will need:
 Instructions:
 
 1. Follow Kivy's (v1.10.0) `installation instructions for your operating system <https://kivy.org/docs/installation/installation.html#>`_.
-2. Obtain the source code.
+2. Clone this repo or download the source archive and extract the source code.
 3. In your terminal/console ``cd`` into the source code's root folder, which should contain these folders: *clontris*, *docs*.
 4. Launch with Python::
 
