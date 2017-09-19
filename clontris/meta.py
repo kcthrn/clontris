@@ -31,4 +31,4 @@ Then access this module's attributes like this::
 
 package_name = 'clontris'
 project_name = 'Clontris'
-version = '0.1.0'
+version = '0.1.0-dev'
