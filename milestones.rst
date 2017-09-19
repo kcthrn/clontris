@@ -25,7 +25,7 @@ Milestones
 - [DONE] Set up logging to terminal
 - [DONE] Disable fullscreen
 - [DONE] Add game loop
-- Set up keyboard input
+- [DONE] Set up keyboard input
 - [DONE] Add licence
 
 0.2.0
