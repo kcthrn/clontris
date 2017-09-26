@@ -1,0 +1,16 @@
+@startuml
+
+title PlayfieldView
+
+class PlayfieldView {
+  total_rows
+  total_columns
+  children : CellView[0..total_rows × total_columns]
+}
+
+class CellView {
+  row
+  column
+}
+
+@enduml

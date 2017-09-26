@@ -1,0 +1,32 @@
+@startuml
+
+title Drawing using PlayfieldView's children
+
+participant PlayfieldView
+participant "children[w] : CellView"
+participant Game
+
+note left of PlayfieldView
+  Advantages over using canvas:
+    - Easiest to implement
+    - Easiest to understand (best abstraction)
+    - Scaling done automatically
+
+  Disadvantages:
+    - Uses more memory
+    - Possibly slower
+end note
+
+-> PlayfieldView : draw()
+loop
+  PlayfieldView -> "children[w] : CellView" : draw()
+  "children[w] : CellView" -> Game : get_cell_state(row, column)
+  Game --> "children[w] : CellView" : cell_state
+  alt cell_state == 1
+    "children[w] : CellView" -> "children[w] : CellView" : color = WHITE
+  else
+    "children[w] : CellView" -> "children[w] : CellView" : color = BLACK
+  end
+end
+
+@enduml

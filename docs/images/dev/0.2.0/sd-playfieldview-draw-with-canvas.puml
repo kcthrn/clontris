@@ -1,0 +1,30 @@
+@startuml
+
+title Drawing using PlayfieldView's canvas
+
+participant PlayfieldView
+participant Game
+
+note left of PlayfieldView
+  Advantages over using children
+    - Uses less memory
+    - Possibly faster
+
+  Disadvantages:
+    - Hardest to implement
+    - Need to implement scaling
+      according to window size
+end note
+
+-> PlayfieldView : draw()
+loop row <= total_rows
+  loop column <= total_columns
+    PlayfieldView -> Game : get_cell_state(row, column)
+    Game --> PlayfieldView : cell_state
+    PlayfieldView -> PlayfieldView : draw_cell(cell_state)
+    hnote over PlayfieldView : column += 1
+  end
+  hnote over PlayfieldView : row += 1
+end
+
+@enduml

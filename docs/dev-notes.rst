@@ -21,6 +21,12 @@ Developer Notes
 ===============
 .. Diagrams created with Plantuml/Umlet
 
+0.2.0
+-----
+.. image:: images/dev/0.2.0/dcd-playfieldview.svg
+.. image:: images/dev/0.2.0/sd-playfieldview-draw-with-children.svg
+.. image:: images/dev/0.2.0/sd-playfieldview-draw-with-canvas.svg
+
 0.1.0
 -----
 .. image:: images/dev/0.1.0/domain-model-tetris.svg
