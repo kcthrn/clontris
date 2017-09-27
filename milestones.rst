@@ -30,7 +30,7 @@ Milestones
 
 0.2.0
 -----
-- Add playfield
+- [DONE] Add playfield
 - Add tetrominos without orientations
 - Add manual spawning of tetrominos
 
