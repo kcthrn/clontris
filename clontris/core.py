@@ -17,3 +17,38 @@
 
 
 """This module contains the core functionality of the game."""
+
+
+class Playfield():
+    # TODO: Document Playfield
+
+    def __init__(self):
+        self._rows = 22
+        self._columns = 10
+        self._matrix = [
+            [0 for column in range(self._columns)] for row in range(self._rows)
+        ]
+
+    @property
+    def rows(self):
+        """The total number of rows in the Playfield."""
+        return self._rows
+
+    @property
+    def columns(self):
+        """The total number of columns in the Playfield."""
+        return self._columns
+
+    def get_cell_state(self, row, column):
+        # TODO: Document get_cell_state
+        """Return the state of a cell.
+
+        The state represents the presence of a square at that cell in the
+        Playfield.
+
+        Possible states:
+
+        - 0 : The cell is empty
+        - 1 : The cell is occupied
+        """
+        return self._matrix[row][column]

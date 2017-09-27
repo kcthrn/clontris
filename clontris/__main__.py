@@ -16,27 +16,29 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+from kivy.config import Config
+Config.set('kivy', 'log_level', 'debug')
+# Restrict PlayfieldView's size
+Config.set('graphics', 'resizable', 0)
+Config.set('graphics', 'width', 240)
+Config.set('graphics', 'height', 528)
+
 from kivy.app import App
 from kivy.clock import Clock
 from kivy.logger import Logger
-from kivy.config import Config
 
 from clontris import meta
 from clontris.game import Game
-from clontris.view import View
+from clontris.view import PlayfieldView
 from clontris.input import KeyboardHandler
-
-Config.set('kivy', 'log_level', 'debug')
-Config.set('graphics', 'resizable', 0)
 
 
 class Clontris(App):
 
     def build(self):
-
         self.title = meta.project_name
         self.game = Game()
-        self.root = View()
+        self.root = PlayfieldView(self.game)
         KeyboardHandler(self.game)
 
         # TODO: Change framerate later to 1/30 or 1/60

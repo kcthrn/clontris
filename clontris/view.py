@@ -18,13 +18,59 @@
 
 """This module contains custom widget definitions."""
 
+from kivy.graphics import Color, Rectangle
 from kivy.uix.widget import Widget
+from kivy.uix.gridlayout import GridLayout
 from kivy.logger import Logger
 
 
-class View(Widget):
-    """This is a view into the game."""
+class CellView(Widget):
+    """This is a visual representation of a cell in the Playfield.
+
+    A cell is black when "empty" and white when "occupied" by a square.
+    """
+
+    def __init__(self, row, column, **kwargs):
+        super().__init__(**kwargs)
+        # A cell is identified by its row and column values
+        # This widget will represent only that cell
+        self.row = row
+        self.column = column
+        with self.canvas:
+            self.canvas.clear()
+            self.color = Color(a=0)
+            self.rect = Rectangle(pos=self.pos, size=self.size)
 
     def draw(self):
-        """update the canvas."""
-        Logger.debug("View: Nothing to draw :(")
+        """Change colour to reflect a cell's state."""
+        cell_state = self.parent.game.get_cell_state(self.row, self.column)
+        if cell_state == 0:
+            self.color.rgba = (0, 0, 0, 1)
+        else:
+            self.color.rgba = (1, 1, 1, 1)
+        self.rect.pos = self.pos
+        self.rect.size = self.size
+
+
+class PlayfieldView(GridLayout):
+    # TODO: Document PlayfieldView
+    """This is a view into the game's Playfield.
+
+    Rows and columns are counted from 0.
+    """
+    def __init__(self, game, **kwargs):
+        super().__init__(**kwargs)
+        self.game = game
+        self.cols = game.columns  # need for Layout
+        self.spacing = ['1dp']
+        # Need to place children from the top row toward the bottom
+        for row in range(game.rows-1, -1, -1):
+            for column in range(game.columns):
+                self.add_widget(CellView(row, column))
+        Logger.debug("PlayfieldView: Initialized")
+
+    def draw(self):
+        """Update each CellView's canvas to reflect cell states."""
+        for cell in self.walk(restrict=True):
+            if cell != self:
+                cell.draw()

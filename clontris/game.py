@@ -18,9 +18,16 @@
 
 import logging
 
+from clontris.core import Playfield
+
 
 class Game():
     """The class coordinates all actions in Clontris."""
+
+    def __init__(self):
+        self._playfield = Playfield()
+        self.rows = self._playfield.rows
+        self.columns = self._playfield.columns
 
     def hard_drop(self):
         logging.debug("Game: Did hard drop")
@@ -39,3 +46,9 @@ class Game():
 
     def update(self):
         logging.debug("Game: Nothing to update :D")
+
+    def get_cell_state(self, row, column):
+        """Return the state of a cell in the Playfield.
+
+        Rows and columns are counted from 0."""
+        return self._playfield.get_cell_state(row, column)
